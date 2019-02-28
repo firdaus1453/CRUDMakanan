@@ -19,4 +19,17 @@ public interface ApiInterface {
             @Field("password") String password
     );
 
+    // Membuat endpoint register
+    @FormUrlEncoded
+    @POST("registeruser.php")
+    Call<LoginResponse> registerUser(
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("namauser") String namauser,
+            @Field("alamat") String alamat,
+            @Field("jenkel") String jenkel,
+            @Field("notelp") String notelp,
+            @Field("level") String level
+            );
+
 }
