@@ -3,12 +3,17 @@ package me.firdaus1453.crudmakanan.ui.main;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import me.firdaus1453.crudmakanan.R;
+import me.firdaus1453.crudmakanan.ui.favorite.FavoriteFragment;
+import me.firdaus1453.crudmakanan.ui.makanan.MakananFragment;
+import me.firdaus1453.crudmakanan.ui.profil.ProfilFragment;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View{
 
@@ -23,13 +28,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    MakananFragment makananFragment = new MakananFragment();
+                    loadFragment(makananFragment);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_favorite:
+                    FavoriteFragment favoriteFragment = new FavoriteFragment();
+                    loadFragment(favoriteFragment);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_profil:
+                    ProfilFragment profilFragment = new ProfilFragment();
+                    loadFragment(profilFragment);
                     return true;
             }
             return false;
@@ -44,25 +52,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // Menmapilkan title
+        getSupportActionBar().setTitle("Teams");
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
+    private void loadFragment(Fragment fragment) {
+        // Menampilkan fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fl_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_logout:
-                // Melakukan perintah logout ke presenter
-                mMainPresenter.logoutSession(this);
-                // Menutup mainactivity
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }
