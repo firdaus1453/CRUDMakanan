@@ -1,8 +1,6 @@
 package me.firdaus1453.crudmakanan.ui.register;
 
 
-import android.os.Parcelable;
-
 import me.firdaus1453.crudmakanan.data.remote.ApiClient;
 import me.firdaus1453.crudmakanan.data.remote.ApiInterface;
 import me.firdaus1453.crudmakanan.model.login.LoginData;
