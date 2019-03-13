@@ -1,6 +1,7 @@
 package me.firdaus1453.crudmakanan.ui.profil;
 
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -68,9 +70,10 @@ public class ProfilFragment extends Fragment implements ProfilContract.View {
     private int gender;
     private Menu action;
 
-    private int mGender = 0;
+    private String mGender;
     public static final int GENDER_MALE = 1;
     public static final int GENDER_FEMALE = 2;
+    private ProgressDialog progressDialog;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -113,9 +116,9 @@ public class ProfilFragment extends Fragment implements ProfilContract.View {
                 if (!TextUtils.isEmpty(selection)){
                     // Mencek apakah 1 atau 2 yang dipilih user
                     if (selection.equals(getString(R.string.gender_male))){
-                        mGender = GENDER_MALE;
+                        mGender = "L";
                     }else if(selection.equals(getString(R.string.gender_female))){
-                        mGender = GENDER_FEMALE;
+                        mGender = "P";
                     }
                 }
             }
@@ -125,6 +128,26 @@ public class ProfilFragment extends Fragment implements ProfilContract.View {
 
             }
         });
+    }
+
+    @Override
+    public void showProgress() {
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Saving . . .");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    @Override
+    public void hideProgress() {
+        progressDialog.dismiss();
+    }
+
+    @Override
+    public void showSuccessUpdateUser(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        // Mengambil data ulang
+        mProfilPresenter.getDataUser(getContext());
     }
 
     @Override
@@ -201,7 +224,7 @@ public class ProfilFragment extends Fragment implements ProfilContract.View {
                 return true;
             case R.id.menu_save:
                 // Mencek idUser apakah ada isinya
-                if (TextUtils.isEmpty(idUser)){
+                if (!TextUtils.isEmpty(idUser)){
                     // Mencek apakah semua field masih kosong
                     if (TextUtils.isEmpty(edtName.getText().toString()) ||
                             TextUtils.isEmpty(edtAlamat.getText().toString()) ||
@@ -218,6 +241,18 @@ public class ProfilFragment extends Fragment implements ProfilContract.View {
                         alertDialog.show();
 
                     }else {
+                        // Apabila user sudah mengisi semua field
+                        LoginData loginData = new LoginData();
+                        // Mengisi inputan user ke model logindata
+                        loginData.setId_user(idUser);
+                        loginData.setNamaUser(edtName.getText().toString());
+                        loginData.setAlamat(edtAlamat.getText().toString());
+                        loginData.setNoTelp(edtNoTelp.getText().toString());
+                        loginData.setJenkel(mGender);
+
+                        // Mengirim data ke presenter untuk dimasukkan ke dalam database
+                        mProfilPresenter.updateDataUser(getContext(), loginData);
+
                         readMode();
                         action.findItem(R.id.menu_edit).setVisible(true);
                         action.findItem(R.id.menu_save).setVisible(false);
