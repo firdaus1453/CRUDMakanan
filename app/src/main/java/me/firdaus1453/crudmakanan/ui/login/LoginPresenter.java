@@ -1,6 +1,7 @@
 package me.firdaus1453.crudmakanan.ui.login;
 
 import android.content.Context;
+import android.util.Log;
 
 import me.firdaus1453.crudmakanan.data.remote.ApiClient;
 import me.firdaus1453.crudmakanan.data.remote.ApiInterface;
@@ -50,14 +51,18 @@ public class LoginPresenter implements LoginContract.Presenter {
                             LoginData loginData = response.body().getData();
                             String message = response.body().getMessage();
                             view.loginSuccess(message, loginData);
+                            Log.i("login onResponse", response.body().getMessage());
                         }else {
                             view.loginFailure("Data tidak ada");
+                            Log.i("login onResponse", response.body().getMessage());
                         }
                     }else {
                         view.loginFailure(response.body().getMessage());
+                        Log.i("login onResponse", response.body().getMessage());
                     }
                 }else {
                     view.loginFailure("Data tidak ada");
+                    Log.i("login onResponse", "body null");
                 }
             }
 
@@ -65,6 +70,8 @@ public class LoginPresenter implements LoginContract.Presenter {
             public void onFailure(Call<LoginResponse> call, Throwable throwable) {
                 view.hideProgress();
                 view.loginFailure(throwable.getMessage());
+                Log.d("onFailure", "pesan : " +throwable.getMessage());
+
             }
         });
     }

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="me.firdaus1453.crudmakanan">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.register.RegisterActivity"></activity>
+        <activity android:name=".ui.register.RegisterActivity" />
+        <activity android:name=".ui.uploadmakanan.UploadMakananActivity" />
+        <activity android:name=".ui.detailmakanan.DetailMakanan" />
+        <activity android:name=".ui.makananbycategory.MakananByCategory"></activity>
     </application>
 
 </manifest>

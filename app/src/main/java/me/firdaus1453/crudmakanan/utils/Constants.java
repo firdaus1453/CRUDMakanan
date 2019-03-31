@@ -6,6 +6,9 @@ package me.firdaus1453.crudmakanan.utils;
 public class Constants {
     public static final String BASE_URL = "http://192.168.56.1/makanan/";
     public static final String KEY_LOGIN = "KEY_LOGIN";
+    public static final int STORAGE_PERMISSION_CODE = 1;
+    public static final String KEY_EXTRA_ID_MAKANAN = "KEY_EXTRA_ID_MAKANAN";
+    public static final String KEY_EXTRA_ID_CATEGORY = "KEY_EXTRA_ID_CATEGORY";
 
     // KEY UNTUK SHARED PREFERENCE
     public static String pref_name = "PREF_LOGIN";
