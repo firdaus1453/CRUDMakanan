@@ -43,7 +43,6 @@ public class MakananFragment extends Fragment implements MakananContract.View {
     FloatingActionButton floatingActionButton;
 
     // TODO 1 Menyiapkan variable yang dibutuhkan
-    private ProgressDialog mProgressDialog;
     private MakananPresenter mMakananPresenter = new MakananPresenter(this);
 
     public MakananFragment() {

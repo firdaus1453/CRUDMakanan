@@ -1,6 +1,7 @@
 package me.firdaus1453.crudmakanan.ui.detailmakanan;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -18,6 +19,7 @@ import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.NavUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.firdaus1453.crudmakanan.R;
@@ -25,7 +27,7 @@ import me.firdaus1453.crudmakanan.adapter.MakananAdapter;
 import me.firdaus1453.crudmakanan.model.makanan.MakananData;
 import me.firdaus1453.crudmakanan.utils.Constants;
 
-public class DetailMakanan extends AppCompatActivity implements DetailMakananContract.View {
+public class DetailMakananActivity extends AppCompatActivity implements DetailMakananContract.View {
 
     @BindView(R.id.img_makanan_detail)
     ImageView imgMakananDetail;
@@ -106,5 +108,18 @@ public class DetailMakanan extends AppCompatActivity implements DetailMakananCon
         }
         return newDate;
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -198,55 +199,14 @@ public class UploadMakananActivity extends AppCompatActivity implements UploadMa
         }
     }
 
-//    private String getPath(Uri filepath) {
-//        Cursor cursor = getContentResolver().query(filepath, null, null, null, null);
-//        cursor.moveToFirst();
-//        String document_id = cursor.getString(0);
-//        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-//        cursor.close();
-//
-//        cursor = getContentResolver().query(
-//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                null, MediaStore.Images.Media._ID + " = ? ",
-//                new String[]{document_id}, null);
-//        cursor.moveToFirst();
-//        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-//        cursor.close();
-//
-//        return path;
-//    }
-
-//    public Uri getImageContentUri(Context context, File imageFile) {
-//        String fileAbsolutePath = imageFile.getAbsolutePath();
-//        Cursor cursor = context.getContentResolver().query(
-//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                new String[]{MediaStore.Images.Media._ID},
-//                MediaStore.Images.Media.DATA + "=? ",
-//                new String[]{fileAbsolutePath}, null);
-//
-//        if (cursor != null && cursor.moveToFirst()) {
-//            // Apabila file gambar sudah pernah diapakai namun ada kondisi lain yang belum diketahui
-//            // Apabila file gambar sudah pernah dipakai pengambilan bukan di galery
-//
-//            Log.i("Isi Selected if", "Masuk cursor ada");
-//            return filePath;
-//
-//        } else {
-//            Log.i("Isi Selected else", "cursor tidak ada");
-//            if (imageFile.exists()) {
-//                // Apabila file gambar baru belum pernah di pakai
-//                Log.i("Isi Selected else", "imagefile exists");
-//                ContentValues values = new ContentValues();
-//                values.put(MediaStore.Images.Media.DATA, fileAbsolutePath);
-//                return context.getContentResolver().insert(
-//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-//            } else {
-//                // Apabila file gambar sudah pernah dipakai
-//                // Apabila file gambar sudah pernah dipakai di galery
-//                Log.i("Isi Selected else", "imagefile tidak exists");
-//                return filePath;
-//            }
-//        }
-//    }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

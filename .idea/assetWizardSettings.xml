@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/I:/AndroidDeveloper/AndroidStudio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_remove_red_eye_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/I:/AndroidDeveloper/AndroidStudio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_cake_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_eye" />
+                            <entry key="outputName" value="ic_my_makanan" />
                             <entry key="sourceFile" value="C:\Users\Janissaries" />
                           </map>
                         </option>

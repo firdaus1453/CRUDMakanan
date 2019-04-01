@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import me.firdaus1453.crudmakanan.R;
 import me.firdaus1453.crudmakanan.ui.favorite.FavoriteFragment;
 import me.firdaus1453.crudmakanan.ui.makanan.MakananFragment;
+import me.firdaus1453.crudmakanan.ui.makananbyuser.MakananByUserFragment;
 import me.firdaus1453.crudmakanan.ui.profil.ProfilFragment;
 import me.firdaus1453.crudmakanan.ui.uploadmakanan.UploadMakananActivity;
 
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                     loadFragment(makananFragment);
                     return true;
                 case R.id.navigation_favorite:
-                    FavoriteFragment favoriteFragment = new FavoriteFragment();
-                    loadFragment(favoriteFragment);
+                    MakananByUserFragment makananByUserFragment = new MakananByUserFragment();
+                    loadFragment(makananByUserFragment);
                     return true;
                 case R.id.navigation_profil:
                     ProfilFragment profilFragment = new ProfilFragment();
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_logout:
+                mMainPresenter.logoutSession(this);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

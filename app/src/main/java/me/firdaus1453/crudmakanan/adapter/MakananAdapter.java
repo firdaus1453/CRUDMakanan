@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -22,8 +21,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.firdaus1453.crudmakanan.R;
 import me.firdaus1453.crudmakanan.model.makanan.MakananData;
-import me.firdaus1453.crudmakanan.ui.detailmakanan.DetailMakanan;
-import me.firdaus1453.crudmakanan.ui.makananbycategory.MakananByCategory;
+import me.firdaus1453.crudmakanan.ui.detailmakanan.DetailMakananActivity;
+import me.firdaus1453.crudmakanan.ui.makananbycategory.MakananByCategoryActivity;
 import me.firdaus1453.crudmakanan.utils.Constants;
 
 /**
@@ -94,7 +93,7 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.ViewHold
                 foodNewsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        context.startActivity(new Intent(context, DetailMakanan.class).putExtra(Constants.KEY_EXTRA_ID_MAKANAN, makananData.getIdMakanan()));
+                        context.startActivity(new Intent(context, DetailMakananActivity.class).putExtra(Constants.KEY_EXTRA_ID_MAKANAN, makananData.getIdMakanan()));
                     }
                 });
 
@@ -115,7 +114,7 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.ViewHold
                 foodPopulerViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        context.startActivity(new Intent(context, DetailMakanan.class).putExtra(Constants.KEY_EXTRA_ID_MAKANAN, makananData.getIdMakanan()));
+                        context.startActivity(new Intent(context, DetailMakananActivity.class).putExtra(Constants.KEY_EXTRA_ID_MAKANAN, makananData.getIdMakanan()));
                     }
                 });
                 break;
@@ -130,7 +129,7 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.ViewHold
                 foodKategoryViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        context.startActivity(new Intent(context, MakananByCategory.class).putExtra(Constants.KEY_EXTRA_ID_CATEGORY, makananData.getIdKategori()));
+                        context.startActivity(new Intent(context, MakananByCategoryActivity.class).putExtra(Constants.KEY_EXTRA_ID_CATEGORY, makananData.getIdKategori()));
                     }
                 });
                 break;
@@ -154,7 +153,7 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.ViewHold
                 foodNewsViewHolder2.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        context.startActivity(new Intent(context, DetailMakanan.class).putExtra(Constants.KEY_EXTRA_ID_MAKANAN, makananData.getIdMakanan()));
+                        context.startActivity(new Intent(context, DetailMakananActivity.class).putExtra(Constants.KEY_EXTRA_ID_MAKANAN, makananData.getIdMakanan()));
                     }
                 });
                 break;

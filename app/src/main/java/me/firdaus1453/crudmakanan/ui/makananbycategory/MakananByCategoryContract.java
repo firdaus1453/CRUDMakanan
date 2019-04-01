@@ -7,7 +7,7 @@ import me.firdaus1453.crudmakanan.model.makanan.MakananData;
 /**
  * Created by firdaus1453 on 3/28/2019.
  */
-public class MakananByCategoryContract {
+public interface MakananByCategoryContract {
     interface View{
         void showProgress();
         void hideProgress();
